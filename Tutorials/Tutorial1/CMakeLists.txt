@@ -63,5 +63,8 @@ target_link_libraries(Example11Pointwise PUBLIC dace::dace)
 add_executable(Example11DA Example11DA.cpp)
 target_link_libraries(Example11DA PUBLIC dace::dace)
 
+add_executable(Example11DA Example11DARK78.cpp)
+target_link_libraries(Example11DA PUBLIC dace::dace)
+
 add_executable(Example12 Example12.cpp)
 target_link_libraries(Example12 PUBLIC dace::dace)
