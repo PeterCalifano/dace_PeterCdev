@@ -65,8 +65,8 @@ endif(CMAKE_C_COMPILER_ID STREQUAL "GNU")
 
 
 # Boolean options
-option(WITH_ALGEBRAICMATRIX "Include the AlgebraicMatrix type (experimental)" OFF)
-option(WITH_PTHREAD "Enable threading via pthread library" OFF)
+option(WITH_ALGEBRAICMATRIX "Include the AlgebraicMatrix type (experimental)" TRUE)
+option(WITH_PTHREAD "Enable threading via pthread library" TRUE)
 
 # Tri-state option for memory model and the associated choices
 set(DACE_MEMORY_MODEL DYNAMIC CACHE STRING "DACE memory model")
