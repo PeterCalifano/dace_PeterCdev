@@ -1,6 +1,8 @@
 #include <dace/dace.h>
 #include <cmath>
 #include <fstream>
+#include <Eigen/Dense>
+
 using namespace std; using namespace DACE;
 
 // Exercise 6.1.1: The Mid-point rule integrator
