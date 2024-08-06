@@ -1,3 +1,11 @@
+/**
+ * @file EigenDA.hpp
+ * @author PeterC (petercalifano.gs@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date OLD
+ */
+
 // C++ stdlib classes required for interface definition
 #include <vector>
 #include <iostream>

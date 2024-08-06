@@ -35,6 +35,7 @@
 
 // DACE classes required for interface definition
 #include "dace/PromotionTrait.h"
+#include <Eigen/Dense>
 
 namespace DACE
 {
@@ -128,9 +129,10 @@ namespace DACE
 
         //////
         // Modified by PC, 06-08-2024
-        std::vector<T> GetInternal_data() const { return _data; }; //!< Return the data vector
+        std::vector<T> GetInternal_data() const; //!< Return the data vector
+        Eigen::MatrixXd AsEigenMatrix(); //!< Return the data vector
         /////
-        
+
     private:
         unsigned int _nrows;  //!< Number of rows of the matrix
         unsigned int _ncols;  //!< Number of columns of the matrix

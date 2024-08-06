@@ -21,6 +21,10 @@ add_library(dace_s STATIC $<TARGET_OBJECTS:c_core_s> $<TARGET_OBJECTS:c_core_con
 target_include_directories(dace INTERFACE $<INSTALL_INTERFACE:include>)
 target_include_directories(dace_s INTERFACE $<INSTALL_INTERFACE:include>)
 
+# Include Eigen3 library
+find_package(Eigen3 3.4 REQUIRED)
+include_directories(${EIGEN3_INCLUDE_DIR})
+
 if(WITH_PTHREAD)
   target_link_libraries(dace PUBLIC pthread)
   target_link_libraries(dace_s PUBLIC pthread)
@@ -36,8 +40,8 @@ set_property(TARGET dace_s PROPERTY INTERFACE_dace_s_MAJOR_VERSION ${DACE_MAJOR_
 set_property(TARGET dace_s APPEND PROPERTY COMPATIBLE_INTERFACE_STRING dace_s_MAJOR_VERSION)
 
 # explicitly set required minimum C++ standard so it carries through to exported targets and consumers
-set_property(TARGET dace PROPERTY INTERFACE_COMPILE_FEATURES cxx_std_11)
-set_property(TARGET dace_s PROPERTY INTERFACE_COMPILE_FEATURES cxx_std_11)
+set_property(TARGET dace PROPERTY INTERFACE_COMPILE_FEATURES cxx_std_17)
+set_property(TARGET dace_s PROPERTY INTERFACE_COMPILE_FEATURES cxx_std_17)
 
 install(TARGETS dace EXPORT dace
         LIBRARY DESTINATION lib COMPONENT libraries
