@@ -76,6 +76,32 @@ namespace DACE
          */
         AlgebraicMatrix(const int nrows, const int ncols, const T &d) : _nrows(nrows), _ncols(ncols), _data(nrows * ncols, d) {};
 
+        // Added by PeterC, 07-08-2024
+        /*!
+         * Copy-constructor from Eigen::MatrixXd type
+         * \param[in] matrixXd Eigen::MatrixXd object assumed to be column-major
+         * \author PeterC
+         * \date 07-08-2024
+         * \note Incomplete implementation (How to convert Eigen::MatrixXd to AlgebraicMatrix<DA>?)
+         */
+        AlgebraicMatrix(const Eigen::MatrixXd &matrixXd) : _nrows(matrixXd.rows()), _ncols(matrixXd.cols())
+        {
+            if constexpr (std::is_same_v<T, double>)
+
+            { // Call copy constructor of std::vector direclty if T is double
+                _data(matrixXd.data(), matrixXd.data() + matrixXd.size());
+            }
+            else if constexpr (std::is_same_v<T, DA>)
+            {
+                // If T is DA, then initialize constant part of DA variables within AlgebraicMatrix
+                throw std::invalid_argument("Not implemented. There seems to be a degree of freedom in converting Eigen::MatrixXd to AlgebraicMatrix<DA>, which I do not know how to solve as of now (07/08/2024).");
+            }
+            else
+            {
+                throw std::invalid_argument("Invalid template type T for AlgebraicMatrix");
+            };
+        };
+
         /***********************************************************************************
          *     Output number of rows, columns, and size
          ************************************************************************************/
@@ -130,7 +156,7 @@ namespace DACE
         //////
         // Modified by PC, 06-08-2024
         std::vector<T> GetInternal_data() const; //!< Return the data vector
-        Eigen::MatrixXd AsEigenMatrix(); //!< Return the data vector
+        Eigen::MatrixXd AsEigenMatrix();         //!< Return the data vector
         /////
 
     private:
