@@ -1,5 +1,6 @@
 # C++ interface source files
 set(SRCCXXIF AlgebraicVector.cpp DA.cpp DACEException.cpp DAFormatter.cpp MathExtension.cpp Monomial.cpp compiledDA.cpp)
+include_directories(include ${PROJECT_BINARY_DIR}/core/include ${PROJECT_SOURCE_DIR}/core/include)
 
 if(WITH_ALGEBRAICMATRIX)
   list(APPEND SRCCXXIF "AlgebraicMatrix.cpp")

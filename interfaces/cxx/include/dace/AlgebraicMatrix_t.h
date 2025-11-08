@@ -58,7 +58,7 @@ namespace DACE
         if (obj1.size() != obj2.nrows())
             throw std::runtime_error("DACE::AlgebraicMatrix<T>::operator*: objects in vector/matrix multiplication must have compatible size.");
 
-        AlgebraicVector<typename PromotionTrait<U, V>::returnType> temp(obj2.ncols());
+    AlgebraicVector<typename PromotionTrait< U, V >::returnType> temp(obj2.ncols());
 
         for (unsigned int i = 0; i < obj2.ncols(); i++)
         {
@@ -83,7 +83,7 @@ namespace DACE
         if (obj1.ncols() != obj2.size())
             throw std::runtime_error("DACE::AlgebraicMatrix<T>::operator*: objects in vector/matrix multiplication must have compatible size.");
 
-        AlgebraicVector<typename PromotionTrait<U, V>::returnType> temp(obj1.nrows());
+    AlgebraicVector<typename PromotionTrait< U, V >::returnType> temp(obj1.nrows());
 
         for (unsigned int i = 0; i < obj1.nrows(); i++)
         {
