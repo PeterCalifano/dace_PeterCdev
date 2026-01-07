@@ -46,10 +46,9 @@
 #include "dace/AlgebraicMatrix_t.h"
 #endif /* WITH_ALGEBRAICMATRIX */
 
-// TODO: Add options to include the interface code
-// #if WITH_EIGEN
+#ifdef WITH_EIGEN
 #include <Eigen/Dense>
-// #endif /* WITH_EIGEN */
+#endif
 
 namespace DACE
 {
@@ -112,7 +111,7 @@ namespace DACE
         // Hence the +1.
     }
 
-    // #if WITH_EIGEN
+    #ifdef WITH_EIGEN
     template <typename T>
     AlgebraicVector<T>::AlgebraicVector(const Eigen::VectorXd &vector) : std::vector<T>(vector.size())
     {
@@ -131,6 +130,7 @@ namespace DACE
             }
         }
     };
+    #endif
 
     // Template specialization for DA type only (TO COMPLETE)
     //template <>

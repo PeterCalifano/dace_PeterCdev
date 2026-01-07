@@ -40,7 +40,9 @@
 #include "dace/PromotionTrait.h"
 #include "dace/AlgebraicVector.h"
 #include "dace/AlgebraicMatrix.h"
+#ifdef WITH_EIGEN
 #include <Eigen/Dense>
+#endif
 
 namespace DACE
 {
@@ -847,6 +849,7 @@ namespace DACE
         return _data;
     };
 
+#ifdef WITH_EIGEN
     /**
      * @brief Return a Eigen::MatrixXd from the AlgebraicMatrix
      *
@@ -872,6 +875,7 @@ namespace DACE
             return MatrixMap;
         }
     };
+#endif
 
     ///////////////////////////////////////////////////////////////////////////
 

@@ -37,9 +37,9 @@
 #include "dace/PromotionTrait.h"
 #include "dace/DA.h"
 
-//#if WITH_EIGEN
+#ifdef WITH_EIGEN
 #include <Eigen/Dense>
-//#endif
+#endif
 
 namespace DACE{
 
@@ -62,9 +62,9 @@ public:
     AlgebraicVector(const std::vector<T> &v, const size_t first, const size_t last);          //!< Extraction constructor
     AlgebraicVector(std::initializer_list<T> l);                                              //!< Constructor from braced initializer list
     
-    //#if WITH_EIGEN
+#ifdef WITH_EIGEN
     AlgebraicVector(const Eigen::VectorXd &vector);                                           //!< Copy constructor from Eigen::Vector
-    //#endif
+#endif
     /***********************************************************************************
     *     Element and coefficient access / extraction routines
     ************************************************************************************/

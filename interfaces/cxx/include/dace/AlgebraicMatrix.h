@@ -35,7 +35,9 @@
 
 // DACE classes required for interface definition
 #include "dace/PromotionTrait.h"
+#ifdef WITH_EIGEN
 #include <Eigen/Dense>
+#endif
 
 namespace DACE
 {
@@ -76,6 +78,7 @@ namespace DACE
          */
         AlgebraicMatrix(const int nrows, const int ncols, const T &d) : _nrows(nrows), _ncols(ncols), _data(nrows * ncols, d) {};
 
+#ifdef WITH_EIGEN
         // Added by PeterC, 07-08-2024
         /*!
          * Copy-constructor from Eigen::MatrixXd type
@@ -101,6 +104,7 @@ namespace DACE
                 throw std::invalid_argument("Invalid template type T for AlgebraicMatrix");
             };
         };
+#endif
 
         /***********************************************************************************
          *     Output number of rows, columns, and size
@@ -156,7 +160,9 @@ namespace DACE
         //////
         // Modified by PC, 06-08-2024
         std::vector<T> GetInternal_data() const; //!< Return the data vector
+#ifdef WITH_EIGEN
         Eigen::MatrixXd AsEigenMatrix();         //!< Return the data vector
+#endif
         /////
 
     private:

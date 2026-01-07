@@ -49,6 +49,7 @@
 #cmakedefine WITH_DEBUG
 #cmakedefine WITH_ALGEBRAICMATRIX
 #cmakedefine WITH_PTHREAD
+#cmakedefine WITH_EIGEN
 
 // automatically detected function availability at library build time
 #cmakedefine HAVE_SAFE_STRINGS
